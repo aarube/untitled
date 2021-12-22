@@ -1,4 +1,5 @@
 public class Arithmetic {
+
     private int first = 90;
     private int second = 50;
 
@@ -13,30 +14,27 @@ public class Arithmetic {
         return;
     }
 
-    public void getMultiply(int first, int second) {
+    public static void getMultiply(int first, int second) {
         int multiply;
         multiply = first * second;
     }
 
-    public void getMax(int first, int second) {
+    public static void getMax(int first, int second) {
         int max;
         if (first > second) {
             max = first;
-            return;
         } else {
             max = second;
-            return;
         }
     }
 
-    public void getMin(int first, int second){
+    public static void getMin(int first, int second){
         int min;
         if (first < second) {
             min = first;
-            return;
         } else {
             min = second;
-            return;
+            System.out.println(min);
         }
     }
 }
