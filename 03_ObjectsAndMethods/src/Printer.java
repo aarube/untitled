@@ -1,27 +1,27 @@
 public class Printer {
 
-    private static String queue = "";
-    private static int pageForPrint = 0;
+    private String queue = "";
+    private int pageForPrint = 0;
 
-    public static void append(String text) {
+    public void append(String text) {
         append(text, "NoName", 1);
     }
 
-    public static void append(String text, String name) {
+    public void append(String text, String name) {
         append(text, name, 1);
     }
 
-    public static void append(String text, String name, int countPage) {
+    public void append(String text, String name, int countPage) {
         queue = queue + "Название: "+ name +"\n" +text +"\n" + "Страниц в документе: " + countPage + "\n \n";
         pageForPrint = pageForPrint + countPage;
     }
 
 
-    public static void clear() {
+    public void clear() {
         queue = "";
     }
 
-    public static void print() {
+    public void print() {
         System.out.println("Задачи принтера: ");
         if(queue.isEmpty()) {
             System.out.println("Принтер готов к работе");
@@ -30,11 +30,11 @@ public class Printer {
         }
     }
 
-    public static int getPendingPagesCount() {
+    public int getPendingPagesCount() {
         return  pageForPrint;
     }
 
-    public static int getTotalPendingPageCount() {
+    public int getTotalPendingPageCount() {
         int totalPage = 0;
         totalPage = totalPage + pageForPrint;
         return totalPage;

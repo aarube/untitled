@@ -1,40 +1,34 @@
 public class Arithmetic {
 
-    private int first = 90;
-    private int second = 50;
+    public int first;
+    public int second;
 
-    public Arithmetic(int first, int second) {
-        this.first = first;
-        this.second = second;
+    public Arithmetic() {
+       first = 10;
+        second = 20;
     }
 
-    public static void getPlus(int first, int second) {
-        int plus;
-        plus = first + second;
-        return;
+    public int getPlus() {
+        return first + second;
     }
 
-    public static void getMultiply(int first, int second) {
-        int multiply;
-        multiply = first * second;
+    public int getMultiply() {
+        return first * second;
     }
 
-    public static void getMax(int first, int second) {
-        int max;
+    public int getMax() {
         if (first > second) {
-            max = first;
-        } else {
-            max = second;
+            return first;
         }
+
+        return second;
     }
 
-    public static void getMin(int first, int second){
-        int min;
+    public int getMin() {
         if (first < second) {
-            min = first;
-        } else {
-            min = second;
-            System.out.println(min);
+            return first;
         }
+
+        return second;
     }
 }

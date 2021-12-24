@@ -1,16 +1,12 @@
 public class Main {
 
     public static void main(String[] args) {
-        Printer.append("How many word here?");
-        Printer.append("How many word here?","HMWH?");
-        Printer.append("How many word here","HMWH?",20);
-        Printer.print();
-        System.out.println("Всего страниц для печати: "+Printer.getPendingPagesCount());
-        Printer.clear();
-        Printer.print();
-
-
-
+        //Работа кода из второго упражнения
+       Arithmetic Test2 = new Arithmetic();
+        System.out.println("Сложение "+Test2.getPlus());
+        System.out.println("Умножение "+Test2.getMultiply());
+        System.out.println("Максимум "+Test2.getMax());
+        System.out.println("Минимум "+Test2.getMin());
     }
 
 }
