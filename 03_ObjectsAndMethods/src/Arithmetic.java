@@ -1,7 +1,7 @@
 public class Arithmetic {
 
-    public int first;
-    public int second;
+     int first;
+     int second;
 
     public Arithmetic() {
        first = 10;

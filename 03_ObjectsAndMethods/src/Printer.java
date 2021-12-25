@@ -1,7 +1,6 @@
 public class Printer {
-
-    private String queue = "";
-    private int pageForPrint = 0;
+    String queue = "";
+    int pageForPrint = 0;
 
     public void append(String text) {
         append(text, "NoName", 1);
@@ -19,6 +18,7 @@ public class Printer {
 
     public void clear() {
         queue = "";
+        pageForPrint = 0;
     }
 
     public void print() {
@@ -34,8 +34,7 @@ public class Printer {
         return  pageForPrint;
     }
 
-    public int getTotalPendingPageCount() {
-        int totalPage = 0;
+    public int getTotalPendingPageCount(int totalPage) {
         totalPage = totalPage + pageForPrint;
         return totalPage;
     }
