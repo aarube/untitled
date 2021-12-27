@@ -1,5 +1,5 @@
 public class Printer {
-    
+
     String queue = "";
 
     int pageForPrint;
@@ -8,6 +8,10 @@ public class Printer {
 
     public void append(String text) {
         append(text, "NoName", 1);
+    }
+
+    public void append(String text, int pageCount) {
+        append(text, "NoName", pageCount);
     }
 
     public void append(String text, String name) {
