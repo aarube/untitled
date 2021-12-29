@@ -30,7 +30,7 @@ public class Elevator {
             System.out.println("Введите номер эатажа: ");
             int floor = new Scanner(System.in).nextInt();
 
-            if (floor > maxFloor || floor < minFloor) {
+            if (floor > maxFloor || floor < minFloor || floor == currentFloor) {
                 System.out.println("Введен некорректный этаж");
             } else {
                 while (floor < currentFloor) {
