@@ -5,7 +5,6 @@ public class Printer {
     int pageForPrint;
     int totalPage;
 
-
     public void append(String text) {
         append(text, "NoName", 1);
     }
@@ -19,20 +18,20 @@ public class Printer {
     }
 
     public void append(String text, String name, int pageCount) {
-        queue = queue + "Название: "+ name + "\n" +text + "\n"
+        queue = queue + "Название: " + name + "\n" + text + "\n"
                 + "Страниц в документе: " + pageCount + "\n \n";
-        pageForPrint = pageForPrint+ pageCount;
+        pageForPrint = pageForPrint + pageCount;
     }
 
     public int getPendingPagesCount() {
-        return  pageForPrint;
+        return pageForPrint;
     }
 
 
     public void print() {
         totalPage = totalPage + pageForPrint;
         System.out.println("Задачи принтера: ");
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             System.out.println("Принтер готов к работе");
         } else {
             System.out.println(queue);
@@ -45,4 +44,3 @@ public class Printer {
         return totalPage;
     }
 }
-

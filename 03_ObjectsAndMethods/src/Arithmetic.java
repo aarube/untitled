@@ -1,10 +1,10 @@
 public class Arithmetic {
 
-     int first;
-     int second;
+    int first;
+    int second;
 
     public Arithmetic() {
-       first = 10;
+        first = 10;
         second = 20;
     }
 
