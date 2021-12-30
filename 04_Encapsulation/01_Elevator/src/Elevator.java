@@ -7,9 +7,9 @@ public class Elevator {
     private int minFloor;
     private int maxFloor;
 
-    Elevator() {
-        minFloor = -3;
-        maxFloor = 100;
+    Elevator(int minFloor, int maxFloor) {
+        this.minFloor = minFloor;
+        this.maxFloor = maxFloor;
     }
 
     public int getCurrentFloor() {
@@ -27,12 +27,15 @@ public class Elevator {
 
     public void move() {
         while (true) {
-            System.out.println("Введите номер эатажа: ");
+            System.out.println("Введите номер этажа: ");
             int floor = new Scanner(System.in).nextInt();
 
-            if (floor > maxFloor || floor < minFloor || floor == currentFloor) {
+            if (floor > maxFloor || floor < minFloor) {
                 System.out.println("Введен некорректный этаж");
-            } else {
+            }
+            if (floor == currentFloor) {
+                System.out.println("Вы уже на месте");
+            }else {
                 while (floor < currentFloor) {
                     moveDown();
                     System.out.println("Идет вниз " + getCurrentFloor());
@@ -45,4 +48,5 @@ public class Elevator {
             }
         }
     }
+
 }
