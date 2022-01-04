@@ -1,19 +1,19 @@
 public class Dimensions {
-    private final int width; //ширина
-    private final int height; //высота
-    private final int length; //длинна
+    private final double width; //mm
+    private final double height; //mm
+    private final double length; //mm
 
-    public Dimensions(int width, int height, int length) {
+    public Dimensions(double width, double height, double length) {
         this.width = width;
         this.height = height;
         this.length = length;
     }
 
-    public Dimensions setDimensions(int width, int length, int height) {
+    public Dimensions setDimensions(double width, double length, double height) {
         return new Dimensions(width, length,height);
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return width*height*length;
     }
 
