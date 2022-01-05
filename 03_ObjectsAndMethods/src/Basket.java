@@ -1,15 +1,22 @@
 public class Basket {
 
-    private static int count = 0;
+    private static int countBasket = 0;
+    private static int countProduct;
+
+    private static int totalCostBasket;
+    private static int totalCostProductInBasket;
+
     private String items = "";
-    private int totalPrice = 0;
+    private int totalPrice;
     private int limit;
     private double totalWeight; //gram
 
     public Basket() {
         increaseCount(1);
+        totalCostBasket(totalPrice);
+        totalCostProductInBasket(countProduct);
         items = "Список товаров:";
-        this.limit = 1000000;
+        limit = 100000;
     }
 
     public Basket(int limit) {
@@ -24,11 +31,11 @@ public class Basket {
     }
 
     public static int getCount() {
-        return count;
+        return countBasket;
     }
 
-    public static void increaseCount(int count) {
-        Basket.count = Basket.count + count;
+    public static void increaseCount(int countBasket) {
+        Basket.countBasket = Basket.countBasket + countBasket;
     }
 
     public void add(String name, int price) {
@@ -36,17 +43,9 @@ public class Basket {
     }
 
     public void add(String name, int price, double weight, int count) {
-        boolean error = false;
-        if (contains(name)) {
-            error = true;
-        }
 
-        if (totalPrice + count * price >= limit) {
-            error = true;
-        }
-
-        if (error) {
-            System.out.println("Error occured :(");
+        if (contains(name) || totalPrice + count * price >= limit) {
+            System.out.println("Error occurred :( ");
             return;
         }
 
@@ -54,7 +53,27 @@ public class Basket {
                 count + " шт. - " + price;
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + count * weight;
+
+        this.countProduct = count;
+
     }
+
+    public static void totalCostBasket(int Price) {
+        Basket.totalCostBasket = Basket.totalCostBasket + Price;
+    }
+
+    public static void totalCostProductInBasket(int count) {
+        Basket.totalCostProductInBasket = totalCostProductInBasket + count;
+    }
+
+    public static int getAverageProductPrice() {
+        return totalCostBasket/totalCostProductInBasket;
+    }
+
+    public static int getAverageBasketPrice() {
+        return totalCostBasket/countBasket;
+    }
+
 
     public void clear() {
         items = "";
