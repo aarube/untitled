@@ -1,15 +1,16 @@
 public class Basket {
 
-    private static int countBasket = 0;
-    private static int countProduct;
-
-    private static int totalCostBasket;
-    private static int totalCostProductInBasket;
+    private static double countBasket = 0;
+    private static double countProduct;
+    private static double totalWeight; //gram
+    private static double totalCostBasket;
+    private static double totalCostProductInBasket;
+    private static double totalPrice;
+    private double limit;
 
     private String items = "";
-    private int totalPrice;
-    private int limit;
-    private double totalWeight; //gram
+    private double basketPrice;
+
 
     public Basket() {
         increaseCount(1);
@@ -19,30 +20,29 @@ public class Basket {
         limit = 100000;
     }
 
-    public Basket(int limit) {
+    public Basket(double limit) {
         this();
         this.limit = limit;
     }
-
-    public Basket(String items, int totalPrice) {
+    public Basket(String items, double totalPrice) {
         this();
         this.items = this.items + items;
         this.totalPrice = totalPrice;
     }
 
-    public static int getCount() {
+
+    public static double getCount() {
         return countBasket;
     }
-
-    public static void increaseCount(int countBasket) {
+    public static void increaseCount(double countBasket) {
         Basket.countBasket = Basket.countBasket + countBasket;
     }
 
-    public void add(String name, int price) {
+
+    public void add(String name, double price) {
         add(name, price, 0, 1);
     }
-
-    public void add(String name, int price, double weight, int count) {
+    public void add(String name, double price, double weight, double count) {
 
         if (contains(name) || totalPrice + count * price >= limit) {
             System.out.println("Error occurred :( ");
@@ -50,55 +50,57 @@ public class Basket {
         }
 
         items = items + "\n" + name + " - " +
-                count + " шт. - " + price;
-        totalPrice = totalPrice + count * price;
+                count + " шт. - " + (price*weight*count) + " руб.";
+        totalPrice = totalPrice + (count * price * weight);
+        basketPrice = totalPrice;
         totalWeight = totalWeight + count * weight;
 
         this.countProduct = count;
 
     }
 
-    public static void totalCostBasket(int Price) {
-        Basket.totalCostBasket = Basket.totalCostBasket + Price;
+    public static double getTotalPrice() {
+        return Basket.totalPrice;
+    }
+    public static double getTotalWeight() {
+        return totalWeight;
     }
 
-    public static void totalCostProductInBasket(int count) {
+
+    public static void totalCostBasket(double Price) {
+        Basket.totalCostBasket = Basket.totalCostBasket + Price;
+    }
+    public static void totalCostProductInBasket(double count) {
         Basket.totalCostProductInBasket = totalCostProductInBasket + count;
     }
 
-    public static int getAverageProductPrice() {
+
+    public static double getAverageBasketPrice() {
         return totalCostBasket/totalCostProductInBasket;
     }
-
-    public static int getAverageBasketPrice() {
+    public static double getAverageProductPrice() {
         return totalCostBasket/countBasket;
     }
 
 
-    public void clear() {
-        items = "";
-        totalPrice = 0;
-        totalWeight = 0;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public double getTotalWeight() {
-        return totalWeight;
-    }
 
     public boolean contains(String name) {
         return items.contains(name);
     }
 
+
     public void print(String title) {
-        System.out.println(title);
+        System.out.println("\n" + title);
         if (items.isEmpty()) {
             System.out.println("Корзина пуста");
         } else {
-            System.out.println(items);
+            System.out.println("\n" + items);
         }
+    }
+
+    public void clear() {
+        items = "";
+        totalPrice = 0;
+        totalWeight = 0;
     }
 }
