@@ -1,17 +1,24 @@
 public class ArithmeticCalculator {
-    private static int a;
-    private static int b;
+    private static double a;
+    private static double b;
+    public double results;
 
-    public Operation type;
 
-
-    public ArithmeticCalculator(int a, int b, Operation type) {
+    public ArithmeticCalculator(double a, double b) {
         this.a = a;
         this.b = b;
-        this.type = type;
     }
 
-    public int calculate() {
-        return a*b;
+    public void calculate(Operation type) {
+        switch (type) {
+            case MULTIPLY -> results = a*b;
+            case ADD -> results = a + b;
+            case SUBTRACT -> results = a - b;
+        }
     }
+
+    public double getResults() {
+        return results;
+    }
+
 }
