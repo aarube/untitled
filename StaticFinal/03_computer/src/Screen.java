@@ -1,32 +1,31 @@
 public class Screen {
 
-    private double diagonal;
+    private final double diagonal;
 
-    private double screenWeight;
+    private final double screenWeight;
 
-    private ScreenType screenType;
+    private final ScreenType screenType;
+
+    public Screen(double diagonal, double screenWeight, ScreenType screenType) {
+        this.diagonal = diagonal;
+        this.screenWeight = screenWeight;
+        this.screenType = screenType;
+    }
 
     public double getDiagonal() {
         return diagonal;
-    }
-
-    public double getScreenWeight() {
-        return screenWeight;
     }
 
     public ScreenType getScreenType() {
         return screenType;
     }
 
-    public void setDiagonal(double diagonal) {
-        this.diagonal = diagonal;
+    public double getScreenWeight() {
+        return screenWeight;
     }
 
-    public void setScreenWeight(double screenWeight) {
-        this.screenWeight = screenWeight;
-    }
-
-    public void setScreenType(ScreenType screenType) {
-        this.screenType = screenType;
+    public String toString() {
+        return "\nТип матрицы: " + getScreenType() +
+                "\nДиагональ: " + getDiagonal() + " Дюйм.";
     }
 }

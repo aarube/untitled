@@ -1,32 +1,32 @@
 public class HDD {
 
-    private double memoryVolume;
+    private final double memoryVolume;
 
-    private HddType hddType;
+    private final HddType hddType;
 
-    private double HddWeight;
+    private final double HddWeight;
+
+    public HDD(double memoryVolume, HddType hddType, double hddWeight) {
+        this.memoryVolume = memoryVolume;
+        this.hddType = hddType;
+        HddWeight = hddWeight;
+    }
 
     public double getMemoryVolume() {
         return memoryVolume;
-    }
-
-    public void setMemoryVolume(double memoryVolume) {
-        this.memoryVolume = memoryVolume;
     }
 
     public HddType getHddType() {
         return hddType;
     }
 
-    public void setHddType(HddType hddType) {
-        this.hddType = hddType;
-    }
-
     public double getHddWeight() {
         return HddWeight;
     }
 
-    public void setHddWeight(double hddWeight) {
-        HddWeight = hddWeight;
+    public String toString() {
+        return
+                "\nТип накопителя: "+ getHddType() +
+                "\nОбщий объем памяти: " + getMemoryVolume() + " Гб.";
     }
 }

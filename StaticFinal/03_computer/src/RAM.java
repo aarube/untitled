@@ -1,32 +1,31 @@
 public class RAM {
 
-    private RamType ramType;
+    private final RamType ramType;
 
-    private double volumeRam;
+    private final double volumeRam;
 
-    private double ramWeight;
+    private final double ramWeight;
+
+    public RAM(RamType ramType, double volumeRam, double ramWeight) {
+        this.ramType = ramType;
+        this.volumeRam = volumeRam;
+        this.ramWeight = ramWeight;
+    }
 
     public RamType getRamType() {
         return ramType;
-    }
-
-    public void setRamType(RamType ramType) {
-        this.ramType = ramType;
     }
 
     public double getVolumeRam() {
         return volumeRam;
     }
 
-    public void setVolumeRam(double volumeRam) {
-        this.volumeRam = volumeRam;
-    }
-
     public double getRamWeight() {
         return ramWeight;
     }
 
-    public void setRamWeight(double ramWeight) {
-        this.ramWeight = ramWeight;
+    public String toString() {
+        return "\nТип: " + getRamType() +
+                "\nОбъем оепративной памяти: " + getVolumeRam() + " Гб.";
     }
 }

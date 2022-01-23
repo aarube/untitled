@@ -1,15 +1,21 @@
 public class CPU {
 
-    public double frequency;
+    private final double frequency;
 
-    private double countCores;
+    private final double countCores;
 
-    private VendorCpu vendorCpu;
+    private final VendorCpu vendorCpu;
 
-    private double cpuWeight;
+    private final double cpuWeight;
 
+    public CPU(double frequency, double countCores, VendorCpu vendorCpu, double cpuWeight) {
+        this.frequency = frequency;
+        this.countCores = countCores;
+        this.vendorCpu = vendorCpu;
+        this.cpuWeight = cpuWeight;
+    }
 
-    public double getFrequency() {
+    public  double getFrequency() {
         return frequency;
     }
 
@@ -23,23 +29,6 @@ public class CPU {
 
     public double getCpuWeight() {
         return cpuWeight;
-    }
-
-
-    public void setFrequency(double frequency) {
-        this.frequency = frequency;
-    }
-
-    public void setCountCores(double countCores) {
-        this.countCores = countCores;
-    }
-
-    public void setVendorCpu(VendorCpu vendorCpu) {
-        this.vendorCpu = vendorCpu;
-    }
-
-    public void setCpuWeight(double cpuWeight) {
-        this.cpuWeight = cpuWeight;
     }
 
     public String toString() {

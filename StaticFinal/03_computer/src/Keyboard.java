@@ -1,32 +1,30 @@
 public class Keyboard {
 
-    private KeyboardType keyboardType;
+    private final KeyboardType keyboardType;
 
-    private KeyboardLight keyboardLight;
+    private final KeyboardLight keyboardLight;
 
-    private double keyboardWeight;
+    private final double keyboardWeight;
+
+    public Keyboard(KeyboardType keyboardType, KeyboardLight keyboardLight, double keyboardWeight) {
+        this.keyboardType = keyboardType;
+        this.keyboardLight = keyboardLight;
+        this.keyboardWeight = keyboardWeight;
+    }
 
     public KeyboardType getKeyboardType() {
         return keyboardType;
     }
-
-    public void setKeyboardType(KeyboardType keyboardType) {
-        this.keyboardType = keyboardType;
-    }
-
     public KeyboardLight getKeyboardLight() {
         return keyboardLight;
     }
-
-    public void setKeyboardLight(KeyboardLight keyboardLight) {
-        this.keyboardLight = keyboardLight;
-    }
-
     public double getKeyboardWeight() {
         return keyboardWeight;
     }
 
-    public void setKeyboardWeight(double keyboardWeight) {
-        this.keyboardWeight = keyboardWeight;
+    public String toString() {
+        return
+                "\nТип подключение: " + getKeyboardType() +
+                "\nПодсветка клавиатуры: " + getKeyboardLight();
     }
 }
