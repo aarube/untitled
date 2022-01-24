@@ -3,38 +3,66 @@ public class Computer {
     private final String vendor;
     private final String nameComputer;
 
-    private static CPU cpu;
-    private static HDD hdd;
-    private static RAM ram;
-    private static Screen screen;
-    private static Keyboard keyboard;
+    private CPU cpu;
+    private HDD hdd;
+    private RAM ram;
+    private Screen screen;
+    private Keyboard keyboard;
 
     public Computer(String vendor, String nameComputer) {
         this.vendor = vendor;
         this.nameComputer = nameComputer;
     }
 
-    public static void setCpu(CPU cpu) {
-        Computer.cpu = cpu;
+    public String getVendor() {
+        return vendor;
     }
 
-    public static void setHdd(HDD hdd) {
-        Computer.hdd = hdd;
+    public String getNameComputer() {
+        return nameComputer;
     }
 
-    public static void setRam(RAM ram) {
-        Computer.ram = ram;
+    public CPU getCpu() {
+        return cpu;
     }
 
-    public static void setScreen(Screen screen) {
-        Computer.screen = screen;
+    public HDD getHdd() {
+        return hdd;
     }
 
-    public static void setKeyboard(Keyboard keyboard) {
-        Computer.keyboard = keyboard;
+    public RAM getRam() {
+        return ram;
     }
 
-    public static double getTotalWeight() {
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public void setCpu(CPU cpu) {
+        this.cpu = cpu;
+    }
+
+    public void setHdd(HDD hdd) {
+        this.hdd = hdd;
+    }
+
+    public void setRam(RAM ram) {
+        this.ram = ram;
+    }
+
+    public void setScreen(Screen screen) {
+        this.screen = screen;
+    }
+
+    public void setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+    }
+
+    public double getTotalWeight() {
         return  cpu.getCpuWeight()+
                 hdd.getHddWeight() +
                 ram.getRamWeight() +
