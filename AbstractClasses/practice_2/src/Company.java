@@ -1,98 +1,87 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Company {
+
+    public ArrayList<Employee> employees = new ArrayList<>();
+    public static double income;
+    public String name;
+
+    public void setIncome(double income) {
+        Company.income = income;
+    }
+
+    public static double getIncome() {
+        return income;
+    }
+
+    public Company(String name, double income) {
+        this.name = name;
+        Company.income = income;
+    }
+
     public void hire(Employee employee) {
-        Manager first = new Manager();
-        Manager second = new Manager();
+        employees.add(employee);
     }
 
-    public void hireAll(Collection<Employee> employes) {
-
-    }
-
-    public void fire(Employee employee) {
-
-    }
-
-    public static int getIncome() {
-        return 0;
-    }
-
-    public ArrayList<Employee> getTopSalaryStaff(int count) {
-        return null;
-    }
-
-    public ArrayList<Employee> getLowestSalaryStaff(int count) {
-        return null;
-    }
-
-    public void getCompanyStaff(ArrayList<Manager> companyStaff) {
-
-    }
-}
-
-class Manager implements Employee {
-    private final double percent = 0.005;
-    private final double BONUS = 25000;
-    private final double MIN_INCOME = 115000;
-
-    public Manager() {
-        getPosition();
-        getMonthSalary();
-    }
-
-    @Override
-    public int getMonthSalary() {
-        return (int) (FIX_SALARY + (int) ((Math.random() * (BONUS)) + MIN_INCOME) * percent);
-    }
-
-    // @Override
-    public String getPosition() {
-        return getClass().getName();
-    }
-
-    //@Override
-    public String getToString() {
-        return getClass().getName() + ": " + getMonthSalary();
-    }
-}
-
-class TopManager implements Employee {
-    private final int REQUIREMENT = 10_000_000;
-    private final double PERCENT_BONUS = 1.5;
-
-    public TopManager() {
-        getPosition();
-        getMonthSalary();
-    }
-
-    @Override
-    public int getMonthSalary() {
-        if (Company.getIncome() > REQUIREMENT) {
-            return (int) (FIX_SALARY + (FIX_SALARY * PERCENT_BONUS));
-        } else {
-            return FIX_SALARY;
+    public void printAll() {
+        for (Employee employee : employees) {
+            System.out.println(employee.getToString());
         }
     }
 
-    @Override
-    public String getPosition() {
-        return getClass().getName();
+
+    public void hireAll(String position, int count) {
+        for (int i = 0; i < count; i++) {
+            switch (position) {
+                case "Operator" -> employees.add(new Operator());
+                case "Manager" -> employees.add(new Manager());
+                case "TopManager" -> employees.add(new TopManager());
+            }
+        }
     }
 
-}
 
-class Operator implements Employee {
-    @Override
-    public int getMonthSalary() {
-        return FIX_SALARY;
+    public void fire(Employee employee) {
+        employees.remove(employee);
     }
 
-    @Override
-    public String getPosition() {
-        return getClass().getName();
+    public void fireAll(int count) {
+        if (count > 0 && count < employees.size()) {
+            for (int i = 0; i < count; i++) {
+                employees.remove(i);
+            }
+        }
+    }
+
+
+    public void getTopSalaryStaff(int count) {
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator().reversed());
+            System.out.println(count + " top salary:");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
+    }
+
+
+    public void getLowestSalaryStaff(int count) {
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator());
+            System.out.println(count + " lowest salary ");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
     }
 }
