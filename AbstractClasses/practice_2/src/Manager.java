@@ -2,22 +2,26 @@ package src;
 
 public class Manager implements Employee {
 
-    public Manager() {
-        getPosition();
-        getMonthSalary();
+//    public Manager() {
+//        getPosition();
+//        getMonthSalary();
+//    }
+
+    public int getManagerIncome() {
+        return (int) ((Math.random() * (25000)) + 115000);
     }
 
-    @Override
     public int getMonthSalary() {
-        return (int) (FIX_SALARY + (int) ((Math.random() * (25000)) + 115000) * 0.005);
+        return (int) (FIX_SALARY + getManagerIncome() * 0.05);
     }
 
-    @Override
-    public void getPosition() {
-    }
 
     @Override
     public String getToString() {
         return getClass().getName() + ": " + getMonthSalary();
+    }
+
+    public int getManagerSalary() {
+        return getMonthSalary();
     }
 }

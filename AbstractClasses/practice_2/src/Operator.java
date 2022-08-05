@@ -1,17 +1,18 @@
 package src;
 
 public class Operator implements Employee {
-    @Override
     public int getMonthSalary() {
         return FIX_SALARY;
     }
 
     @Override
-    public void getPosition() {
+    public int getManagerIncome() {
+        return 0;
     }
+
 
     @Override
     public String getToString() {
-        return getClass().getName() + ": " + FIX_SALARY;
+        return getClass().getName() + ": " + getMonthSalary();
     }
 }

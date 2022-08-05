@@ -2,26 +2,18 @@ package src;
 
 public class Main {
     public static void main(String[] args) {
-        Company test = new Company("test", 15000000);
-        test.setIncome(15000000);
+        Company mts = new Company();
 
-        System.out.println(test.getIncome());
+        mts.hireAll("Manager", 80);
+        mts.hireAll("Operator", 180);
+        mts.hireAll("TopManager", 10);
 
-        Employee operator = new Operator();
-        test.hire(operator);
-        test.fire(operator);
+        System.out.println(mts.getIncome());
 
-        test.hireAll("Operator", 180);
-        test.hireAll("TopManager", 10);
-        test.hireAll("Manager", 80);
-
-        int count = test.employees.size() / 2;
-        System.out.println(count);
-        test.fireAll(count);
-
-        test.printAll();
-
-        test.getLowestSalaryStaff(11);
-        test.getTopSalaryStaff(7);
+        for (Employee item : mts.employees) {
+            if (item.getClass().getName().contains("Manager")) {
+                System.out.println(item.getMonthSalary(mts.getIncome()));
+            }
+        }
     }
 }

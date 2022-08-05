@@ -1,11 +1,14 @@
 package src;
 
 public interface Employee {
-    int FIX_SALARY = 27639;
+    int FIX_SALARY = 26732;
+            ;
 
     int getMonthSalary();
 
-    void getPosition();
+    int getManagerIncome();
+
+    //void getPosition();
 
     String getToString();
 }
