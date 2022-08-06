@@ -4,16 +4,31 @@ public class Main {
     public static void main(String[] args) {
         Company mts = new Company();
 
-        mts.hireAll("Manager", 80);
-        mts.hireAll("Operator", 180);
-        mts.hireAll("TopManager", 10);
+        int topManagerSalary = 0;
+        int managerSalary = 0;
 
-        System.out.println(mts.getIncome());
+        Employee operator =     new Operator();
+        Employee manager =      new Manager();
+        Employee topManager =   new TopManager(mts);
+
+        mts.hireAll(manager,    80);
+        mts.hireAll(operator,   180);
+        mts.hireAll(topManager, 10);
 
         for (Employee item : mts.employees) {
-            if (item.getClass().getName().contains("Manager")) {
-                System.out.println(item.getMonthSalary(mts.getIncome()));
+            if (item instanceof TopManager) {
+                int a = item.getMonthSalary();
+                topManagerSalary = topManagerSalary + a;
             }
         }
+
+        for (Employee item : mts.employees) {
+            if (item instanceof Manager) {
+                managerSalary += item.getMonthSalary();
+            }
+        }
+
+
+
     }
 }

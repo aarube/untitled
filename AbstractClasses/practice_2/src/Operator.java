@@ -10,9 +10,9 @@ public class Operator implements Employee {
         return 0;
     }
 
-
     @Override
     public String getToString() {
-        return getClass().getName() + ": " + getMonthSalary();
+        return null;
     }
+
 }

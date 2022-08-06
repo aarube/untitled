@@ -2,24 +2,26 @@ package src;
 
 import java.util.ArrayList;
 public class Company {
+
     public ArrayList<Employee> employees = new ArrayList<>();
 
     public int getIncome() {
         int a = 0;
         for (Employee item : employees) {
-            if (item.getClass().getName().contains("Manager")) {
+            if (item instanceof Manager) {
                 a += item.getManagerIncome();
             }
         }
         return a;
     }
 
-    public void hire(String position) {
-        getSwitchToHire(position);
+    public void hire(Employee employee) {
+        employees.add(employee);
     }
-    public void hireAll(String position, int count) {
+
+    public void hireAll(Employee employee, int count) {
         for (int i = 0; i < count; i++) {
-            getSwitchToHire(position);
+            employees.add(employee);
         }
     }
 
@@ -35,11 +37,34 @@ public class Company {
         }
     }
 
-    public void getSwitchToHire(String position) {
-        switch (position) {
-            case "Operator" -> employees.add(new Operator());
-            case "Manager" -> employees.add(new Manager());
-            case "TopManager" -> employees.add(new TopManager());
+    public ArrayList<Employee> getLowestSalaryStaff(int count) {
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator());
+            System.out.println(count + " lowest salary ");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
         }
+        return null;
+    }
+
+    public ArrayList<Employee> getTopSalaryStaff(int count) {
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator().reversed());
+            System.out.println(count + " top salary:");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
+        return null;
+
     }
 }

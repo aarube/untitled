@@ -1,15 +1,13 @@
 package src;
 public class TopManager implements Employee {
-
-//    public TopManager() {
-//        getPosition();
-//        getMonthSalary();
-//    }
+    Company company;
+    public TopManager(Company company) {
+        this.company = company;
+    }
 
     @Override
     public int getMonthSalary() {
-        int REQUIREMENT = 10_000_000;
-        if (income > REQUIREMENT) {
+        if (company.getIncome() > 10_000_000) {
             return (int) (FIX_SALARY + (FIX_SALARY * 1.5));
         } else {
             return FIX_SALARY;
@@ -23,6 +21,6 @@ public class TopManager implements Employee {
 
     @Override
     public String getToString() {
-        return getClass().getName()+": "+ getMonthSalary();
+        return null;
     }
 }
