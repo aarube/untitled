@@ -12,7 +12,7 @@ public class Operator implements Employee {
 
     @Override
     public String getToString() {
-        return null;
+        return "Operator" + ": " + getMonthSalary();
     }
 
 }

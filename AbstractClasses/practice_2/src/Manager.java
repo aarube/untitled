@@ -1,5 +1,4 @@
 package src;
-
 public class Manager implements Employee {
 
     @Override
@@ -7,12 +6,13 @@ public class Manager implements Employee {
         return (int) ((Math.random() * (25_000)) + 115_000);
     }
 
-    @Override
-    public String getToString() {
-        return null;
+    public int getMonthSalary() {
+        return (int) (FIX_SALARY + getManagerIncome() * 0.09);
     }
 
-    public int getMonthSalary() {
-        return (int) (FIX_SALARY + getManagerIncome() * 0.05);
+    @Override
+    public String getToString() {
+
+        return "Manager" + ": " + getMonthSalary();
     }
 }
