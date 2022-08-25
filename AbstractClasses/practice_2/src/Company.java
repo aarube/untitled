@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+
 public class Company {
 
     public ArrayList<Employee> employees = new ArrayList<>();
@@ -37,7 +38,7 @@ public class Company {
         }
     }
 
-    public ArrayList<Employee> getLowestSalaryStaff ( int count ){
+    public void getLowestSalaryStaff(int count) {
 
         if (count > 0 && count < employees.size()) {
             employees.sort(new EmployeeComparator());
@@ -51,24 +52,21 @@ public class Company {
                 }
             }
         }
-        return null;
     }
 
-    public ArrayList<Employee> getTopSalaryStaff ( int count ){
+    public void getTopSalaryStaff(int count) {
 
         if (count > 0 && count < employees.size()) {
             employees.sort(new EmployeeComparator().reversed());
-            System.out.println(+count + " top salary:");
+            System.out.println(count + " top salary:");
             int i = 0;
 
-            for (Employee employee : employees) {
+            for (Employee item : employees) {
                 if (i < count) {
-                    System.out.println(employee.getToString());
+                    System.out.println(item.getToString());
                     i++;
                 }
             }
         }
-        return null;
     }
-
 }

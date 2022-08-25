@@ -15,4 +15,9 @@ public class Manager implements Employee {
 
         return "Manager" + ": " + getMonthSalary();
     }
+//
+//    @Override
+//    public int compare(Employee o1, Employee o2) {
+//        return 0;
+//    }
 }

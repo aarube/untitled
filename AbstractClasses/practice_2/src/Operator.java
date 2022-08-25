@@ -15,4 +15,8 @@ public class Operator implements Employee {
         return "Operator" + ": " + getMonthSalary();
     }
 
+//    @Override
+//    public int compare(Employee o1, Employee o2) {
+//        return 0;
+//    }
 }

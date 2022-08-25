@@ -16,7 +16,7 @@ public class Main {
         mts.getLowestSalaryStaff(20);
         mts.getTopSalaryStaff(20);
         mts.fireAll(135);
-        System.out.println("fireAll : 50%");
+        System.out.println("fireAll: 50%");
         mts.getLowestSalaryStaff(20);
         mts.getTopSalaryStaff(20);
     }
