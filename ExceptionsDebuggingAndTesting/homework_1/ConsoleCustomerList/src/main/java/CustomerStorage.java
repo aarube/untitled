@@ -1,8 +1,12 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomerStorage {
     private final Map<String, Customer> storage;
+    String message = "Wrong format. Correct format: \n" +
+            "add Василий Петров vasily.petrov@gmail.com +79215637722";
 
     public CustomerStorage() {
         storage = new HashMap<>();
@@ -15,6 +19,13 @@ public class CustomerStorage {
         final int INDEX_PHONE = 3;
 
         String[] components = data.split("\\s+");
+
+        if (components.length != 4 || checkNumber(components[INDEX_PHONE]) ||
+                !checkEmail(components[INDEX_EMAIL])) {
+
+            throw new IllegalArgumentException(message);
+        }
+
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
     }
@@ -33,5 +44,26 @@ public class CustomerStorage {
 
     public int getCount() {
         return storage.size();
+    }
+
+    public boolean checkNumber(String phone) {
+        String number = phone.replaceAll("[^0-9]", "");
+        String pattern = "[^7-8]*" + "[0-9]" + "{0,9}";
+        return number.matches(pattern);
+    }
+
+    public boolean checkEmail(String email) {
+        String regex = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:" +
+                "[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\" +
+                "[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:" +
+                "[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4]" +
+                "[0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:" +
+                "[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]"+
+                "|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+
+        Pattern checkEmail = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = checkEmail.matcher(email);
+
+        return matcher.find();
     }
 }
