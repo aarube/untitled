@@ -1,12 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerStorage {
     private final Map<String, Customer> storage;
-    String message = "Wrong format. Correct format: \n" +
-            "add Василий Петров vasily.petrov@gmail.com +79215637722";
 
     public CustomerStorage() {
         storage = new HashMap<>();
@@ -20,10 +19,19 @@ public class CustomerStorage {
 
         String[] components = data.split("\\s+");
 
-        if (components.length != 4 || checkNumber(components[INDEX_PHONE]) ||
-                !checkEmail(components[INDEX_EMAIL])) {
+        if (components.length != 4) {
+            throw new IllegalArgumentException("Wrong format of request. Correct format: \n" +
+                    "add Василий Петров vasily.petrov@gmail.com +79215637722");
+        }
 
-            throw new IllegalArgumentException(message);
+        if(!checkEmail(components[INDEX_EMAIL])){
+            throw new IllegalArgumentException("Wrong format of e-mail. Correct format: \n" +
+                    "add Василий Петров vasily.petrov@gmail.com +79215637722");
+        }
+
+        if(checkNumber(components[INDEX_PHONE])) {
+            throw new IllegalArgumentException("Wrong format of number. Correct format: \n" +
+                    "add Василий Петров vasily.petrov@gmail.com +79215637722");
         }
 
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
@@ -48,7 +56,7 @@ public class CustomerStorage {
 
     public boolean checkNumber(String phone) {
         String number = phone.replaceAll("[^0-9]", "");
-        String pattern = "[^7-8]*" + "[0-9]" + "{0,9}";
+        String pattern = "[^7-8]*[0-9]{10}";
         return number.matches(pattern);
     }
 
