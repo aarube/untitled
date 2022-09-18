@@ -4,7 +4,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 public class Main {
-    private static Logger logger;
     private static final String ADD_COMMAND = "add Василий Петров " +
             "vasily.petrov@gmail.com +79215637722";
     private static final String COMMAND_EXAMPLES = "\t" + ADD_COMMAND + "\n" +
@@ -14,7 +13,7 @@ public class Main {
     private static final String helpText = "Command examples:\n" + COMMAND_EXAMPLES;
 
     public static void main(String[] args) {
-        logger = LogManager.getRootLogger();
+        Logger logger = LogManager.getRootLogger();
 
         Scanner scanner = new Scanner(System.in);
         CustomerStorage executor = new CustomerStorage();
@@ -38,7 +37,7 @@ public class Main {
                 } else {
                     System.out.println(COMMAND_ERROR);
                 }
-            } catch (IllegalArgumentException ex) {
+            } catch (Exception ex) {
                 logger.error("Полученная ошибка: " + ex + "\n");
                 System.out.println(ex.getMessage());
             }

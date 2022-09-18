@@ -15,10 +15,9 @@
 
     </appenders>
     <loggers>
-        <root level="info">
+        <root level="debug">
             <appender-ref ref="queries" level="info"/>
             <appender-ref ref="errors" level="error"/>
         </root>
-
     </loggers>
 </configuration>
