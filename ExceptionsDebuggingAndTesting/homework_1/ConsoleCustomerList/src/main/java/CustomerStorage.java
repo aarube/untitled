@@ -21,22 +21,22 @@ public class CustomerStorage {
         try {
             components = data.split("\\s+");
         }catch (ArrayIndexOutOfBoundsException noSplit) {
-            System.out.println("\nWrong format of request. Correct format:" +
+            System.out.println("Wrong format of request. Correct format:" +
                     "add Василий Петров vasily.petrov@gmail.com +79215637722");
         }
 
         if (components.length != 4) {
-            throw new IllegalArgumentException("\nWrong format of request. Correct format:" +
+            throw new IllegalArgumentException("Wrong format of request. Correct format:" +
                     "add Василий Петров vasily.petrov@gmail.com +79215637722");
         }
 
         if(!checkEmail(components[INDEX_EMAIL])){
-            throw new IllegalArgumentException("\nWrong format of e-mail. Correct format:" +
+            throw new IllegalArgumentException("Wrong format of e-mail. Correct format:" +
                     "add Василий Петров vasily.petrov@gmail.com +79215637722");
         }
 
         if(!checkNumber(components[INDEX_PHONE])) {
-            throw new IllegalArgumentException("\nWrong format of number. Correct format:" +
+            throw new IllegalArgumentException("Wrong format of number. Correct format:" +
                     "add Василий Петров vasily.petrov@gmail.com +79215637722");
         }
 

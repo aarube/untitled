@@ -20,7 +20,7 @@ public class Main {
 
         while (true) {
             String command = scanner.nextLine();
-            logger.info("Введенная строка: " + command);
+            logger.info("Ввод: " + command);
             String[] tokens = command.split("\\s+", 2);
 
             try {
@@ -38,7 +38,7 @@ public class Main {
                     System.out.println(COMMAND_ERROR);
                 }
             } catch (Exception ex) {
-                logger.error("Полученная ошибка: " + ex + "\n");
+                logger.error("Ошибка: " + ex);
                 System.out.println(ex.getMessage());
             }
         }

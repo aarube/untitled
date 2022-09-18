@@ -7,6 +7,9 @@
 
         <File name="queries" fileName="logs/queries.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL" />
+            </Filters>
         </File>
 
         <File name="errors" fileName="logs/errors.log">
