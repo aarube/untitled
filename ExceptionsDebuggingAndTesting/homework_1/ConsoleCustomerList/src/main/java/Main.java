@@ -1,6 +1,5 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
         Logger logger = LogManager.getRootLogger();
-
         Scanner scanner = new Scanner(System.in);
         CustomerStorage executor = new CustomerStorage();
 
