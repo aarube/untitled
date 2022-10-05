@@ -12,7 +12,7 @@ public class Main {
     private static final String helpText = "Command examples:\n" + COMMAND_EXAMPLES;
 
     public static void main(String[] args) {
-        Logger logger = LogManager.getRootLogger();
+        Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
         Scanner scanner = new Scanner(System.in);
         CustomerStorage executor = new CustomerStorage();
 

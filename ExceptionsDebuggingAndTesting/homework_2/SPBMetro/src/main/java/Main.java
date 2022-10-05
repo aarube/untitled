@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static final String DATA_FILE = "src/main/resources/map.json";
+   // private static final String DATA_FILE = "src/main/resources/SubwayMap.json";
     private static Scanner scanner;
 
     private static StationIndex stationIndex;
@@ -137,8 +137,8 @@ public class Main {
     private static String getJsonFile() {
         StringBuilder builder = new StringBuilder();
         try {
-            List<String> lines = Files.readAllLines(Paths.get(DATA_FILE));
-            lines.forEach(line -> builder.append(line));
+            List<String> lines = Files.readAllLines(Paths.get("src/main/resources/SubwayMap.json"));
+            lines.forEach(builder::append);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
