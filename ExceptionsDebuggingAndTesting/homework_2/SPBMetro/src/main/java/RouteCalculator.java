@@ -34,8 +34,7 @@ public class RouteCalculator {
         for (int i = 0; i < route.size(); i++) {
             Station station = route.get(i);
             if (i > 0) {
-                duration += previousStation.getLine().equals(station.getLine()) ?
-                        INTER_STATION_DURATION : INTER_CONNECTION_DURATION;
+                duration += previousStation.getLine().equals(station.getLine()) ? INTER_STATION_DURATION : INTER_CONNECTION_DURATION;
             }
             previousStation = station;
         }
@@ -62,8 +61,7 @@ public class RouteCalculator {
                 route.add(station);
             }
 
-            if ((direction == 1 && station.equals(to)) ||
-                    (direction == -1 && station.equals(from))) {
+            if ((direction == 1 && station.equals(to)) || (direction == -1 && station.equals(from))) {
                 break;
             }
         }
@@ -128,8 +126,7 @@ public class RouteCalculator {
 
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
-                List<Station> connectedLineRoute =
-                        getRouteViaConnectedLine(srcStation, dstStation);
+                List<Station> connectedLineRoute = getRouteViaConnectedLine(srcStation, dstStation);
                 if (connectedLineRoute == null) {
                     continue;
                 }

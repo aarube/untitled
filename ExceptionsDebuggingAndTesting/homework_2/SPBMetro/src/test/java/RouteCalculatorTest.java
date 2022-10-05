@@ -7,28 +7,28 @@ import java.util.List;
 
 
 public class RouteCalculatorTest extends TestCase {
-   private final StationIndex testStationIndex = new StationIndex();
+    private final StationIndex testStationIndex = new StationIndex();
     private final RouteCalculator testObject = new RouteCalculator(testStationIndex);
-    List <Station> route;
+    List<Station> route;
 
-    Line lineRed =   new Line(1,"red");
-    Line lineBlue =  new Line(2,"blue");
-    Line lineGreen = new Line(3,"green");
-    Line lineOrange = new Line(4,"orange");
+    Line lineRed = new Line(1, "red");
+    Line lineBlue = new Line(2, "blue");
+    Line lineGreen = new Line(3, "green");
+    Line lineOrange = new Line(4, "orange");
 
-    Station r1 = new Station("Ветеранов",  lineRed);
+    Station r1 = new Station("Ветеранов", lineRed);
     Station r2 = new Station("Классная", lineRed);
-    Station r3 = new Station("Выигрыш",  lineRed);
-    Station r4 = new Station("Залив",    lineRed);
+    Station r3 = new Station("Выигрыш", lineRed);
+    Station r4 = new Station("Залив", lineRed);
 
-    Station b1 = new Station("Купчино",      lineBlue);
+    Station b1 = new Station("Купчино", lineBlue);
     Station b2 = new Station("Пересадочная", lineBlue);
-    Station b3 = new Station("Радиус",       lineBlue);
-    Station b4 = new Station("Взлетная",     lineBlue);
+    Station b3 = new Station("Радиус", lineBlue);
+    Station b4 = new Station("Взлетная", lineBlue);
 
-    Station g1 = new Station("Петровская",   lineGreen);
+    Station g1 = new Station("Петровская", lineGreen);
     Station g2 = new Station("Владимирская", lineGreen);
-    Station g3 = new Station("Онегин",       lineGreen);
+    Station g3 = new Station("Онегин", lineGreen);
 
     Station o1 = new Station("Солнечногорск", lineOrange);
     Station o2 = new Station("Деревенская", lineOrange);
@@ -100,7 +100,7 @@ public class RouteCalculatorTest extends TestCase {
 
     public void testCalculateDuration() {
         double actual = RouteCalculator.calculateDuration(route);
-        assertEquals(11.0,actual);
+        assertEquals(11.0, actual);
     }
 
     public void testGetShortestRoute() {
@@ -110,17 +110,17 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     public void testGetRouteOnTheLine() {
-        int actual = testObject.getShortestRoute(r1,r4).size();
-        assertEquals(0,actual);
+        int actual = testObject.getShortestRoute(r1, r4).size();
+        assertEquals(0, actual);
     }
 
     public void testGetRouteWithOneConnection() {
-        double actual = testObject.getShortestRoute(r1,b1).size();
-        assertEquals(0.0,actual);
+        double actual = testObject.getShortestRoute(r1, b1).size();
+        assertEquals(0.0, actual);
     }
 
     public void testGetRouteWithTwoConnections() {
-        double actual = testObject.getShortestRoute(r1,o2).size();
-        assertEquals(0.0,actual);
+        double actual = testObject.getShortestRoute(r1, o2).size();
+        assertEquals(0.0, actual);
     }
 }
