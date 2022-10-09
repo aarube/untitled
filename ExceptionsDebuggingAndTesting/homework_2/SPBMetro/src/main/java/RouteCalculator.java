@@ -20,11 +20,11 @@ public class RouteCalculator {
         if (route != null) {
             return route;
         }
+
         route = getRouteWithOneConnection(from, to);
-        if (route != null) {
-            return route;
+        if ((route != null ? route.size() : 0) < 1) {
+            route = getRouteWithTwoConnections(from, to);
         }
-        route = getRouteWithTwoConnections(from, to);
         return route;
     }
 
@@ -92,6 +92,9 @@ public class RouteCalculator {
                     }
                 }
             }
+        }
+        if (route.size() == 0) {
+            getRouteWithTwoConnections(from, to);
         }
         return route;
     }
