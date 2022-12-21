@@ -94,7 +94,7 @@ public class RouteCalculatorTest extends TestCase {
         route.add(b4);
     }
 
-    public void testStationIndex() {
+    public void testStationIndex()  {
         assertTrue(testStationIndex.getLine(1).equals(lineRed)
                 && testStationIndex.getLine(2).equals(lineBlue)
                 && testStationIndex.getLine(3).equals(lineGreen)
