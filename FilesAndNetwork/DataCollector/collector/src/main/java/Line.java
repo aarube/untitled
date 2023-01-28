@@ -25,9 +25,6 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Line{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
+        return number.substring(6,number.length()-1) + ", " + name;
     }
 }
