@@ -31,6 +31,10 @@ public class ParseHTML {
 
     public static List<Station> getStation(Document doc) throws Exception {
         List<Station> st = new ArrayList<>();
+        
+        for() {
+            st.add(new Station(number,name);
+        }
 
         Elements a2 = doc.getElementsByClass("js-metro-line");//возвращает список линий, можно получить размер
         System.out.println("a2-1: " + a2.get(0).text());//=Сокольническая линия
@@ -43,7 +47,7 @@ public class ParseHTML {
         System.out.println(a4.get(0).text());
 
         Elements el = doc.getElementsByClass("js-metro-line");
-        System.out.println("docE: " + el.get(0).dataset().toString().substring(6, (el.get(0).dataset().toString()).length() - 1));
+        System.out.println("docE: " + ("Номер линии: ").concat(el.get(0).dataset().toString().substring(6, (el.get(0).dataset().toString()).length() - 1)));
 
 
         return st;
