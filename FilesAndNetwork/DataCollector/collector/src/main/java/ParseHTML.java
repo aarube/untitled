@@ -4,11 +4,7 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class ParseHTML {
-
     public static void main(String[] args) throws Exception {
         getLines(getPage()).forEach(System.out::println);
         getStation(getPage()).forEach(System.out::println);
@@ -23,8 +19,7 @@ public class ParseHTML {
         List<Line> lines = new ArrayList<>();
 
         for (org.jsoup.nodes.Element el : docE) {
-            lines.add(new Line(el.text(),
-                    el.dataset().toString().substring(6, (el.dataset().toString()).length() - 1)));
+            lines.add(new Line(el.text(),el.dataset().toString()));
         }
         return lines;
     }
