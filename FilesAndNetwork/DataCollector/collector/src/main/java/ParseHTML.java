@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class ParseHTML {
 
     public static void main(String[] args) throws Exception {
@@ -31,10 +32,19 @@ public class ParseHTML {
     public static List<Station> getStation(Document doc) throws Exception {
         List<Station> st = new ArrayList<>();
 
-        Elements number = doc.getElementsByClass("js-metro-stations");
-        Elements stations = doc.getElementsByClass("name");
+        Elements a2 = doc.getElementsByClass("js-metro-line");//возвращает список линий, можно получить размер
+        System.out.println("a2-1: " + a2.get(0).text());//=Сокольническая линия
+        System.out.println("a2-1: " + a2.size());//=17
 
-        System.out.println(number.get(0).select("data-line=").text());
+        Elements a3 = doc.getElementsByClass("js-metro-stations t-metrostation-list-table");//выводит длинну массива линии
+        System.out.println(a3.get(0).getElementsByClass("name").size());//=26
+
+        Elements a4 = doc.getElementsByClass("name");//выводит станции в формате "Бульвар Рокоссовского"
+        System.out.println(a4.get(0).text());
+
+        Elements el = doc.getElementsByClass("js-metro-line");
+        System.out.println("docE: " + el.get(0).dataset().toString().substring(6, (el.get(0).dataset().toString()).length() - 1));
+
 
         return st;
     }
