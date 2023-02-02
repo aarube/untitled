@@ -28,6 +28,6 @@ public class Station {
         return "Station{" +
                 "numberOfLine='" + numberOfLine + '\'' +
                 ", name='" + name + '\'' +
-                '}';
+                '}' + "\n";
     }
 }

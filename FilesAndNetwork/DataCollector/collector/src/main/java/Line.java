@@ -25,6 +25,6 @@ public class Line {
 
     @Override
     public String toString() {
-        return number + ", " + name;
+        return number + ", " + name + "\n";
     }
 }

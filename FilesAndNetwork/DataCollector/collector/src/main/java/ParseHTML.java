@@ -4,27 +4,22 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
-public class ParseHTML {
-    public static void main(String[] args) throws Exception {
-        getLines(getPage()).forEach(System.out::println);
-        getStation(getPage()).forEach(System.out::println);
-    }
 
+public class ParseHTML {
     private static Document getPage() throws Exception {
         return Jsoup.connect("https://skillbox-java.github.io/").get();
     }
-
-    public static List<Line> getLines(Document doc) {
+    public List<Line> getLines() throws Exception {
+        Document doc = getPage();
         Elements docE = doc.getElementsByClass("js-metro-line");
         List<Line> lines = new ArrayList<>();
-
         for (org.jsoup.nodes.Element el : docE) {
-            lines.add(new Line(el.text(),el.dataset().toString()));
+            lines.add(new Line(el.text(), el.dataset().toString()));
         }
         return lines;
     }
-
-    public static List<Station> getStation(Document doc) {
+    public List<Station> getStation() throws Exception{
+        Document doc = getPage();
         List<Station> st = new ArrayList<>();
         Elements metroLine = doc.getElementsByClass("js-metro-line");
         Elements metroStations = doc.getElementsByClass("js-metro-stations t-metrostation-list-table");
